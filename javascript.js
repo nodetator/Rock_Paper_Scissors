@@ -4,6 +4,8 @@
 // The Computer will randomly select Rock, Paper or Scissors
 // I need 3 choices (Rock, Paper, Scissors)
 // I need something that stores the choice
+console.log("This is a game of Rock, Paper Scissors, the player, you, will play 5 rounds of rock, papers, scissors against the computer! Let's go!!!")
+
 
 function getComputerChoice() {
     let selections = ["rock", "paper", "scissors"];
@@ -24,27 +26,34 @@ function playRound (playerSelection, computerSelection) {
     // console.log(Computer);
     // Define the Logic 
     if (playerSelection == computerSelection) {
-        return "It's a tie!!!";
+        console.log("HAHAHHAHAH you tied!, player and computer both get 0 points for this round");
+        return "tie";
 
     } else if (playerSelection == 'rock') {
         if (computerSelection == 'paper') {
-            return "Too bad!, you lost, Paper beats Rock!";
+            console.log("Sadly, you lost this round");
+            return "computer";
             
         } else if (computerSelection == 'scissors') {
-            return "Congratulations, you won! Rock beats Scissors";
+            console.log("Congratz! You won against the computer!");
+            return "player";
         }
     } else if (playerSelection == 'paper') {
         if (computerSelection== 'rock') {
-            return "Congratulations, you won! Paper beats Rock!";
+            console.log("Congratz! You won against the computer!");
+            return "player";
         } else if (computerSelection == 'scissors') {
-            return "Too bad, you lost! Scissors beat paper";
+            console.log("Sadly, you lost this round");
+            return "computer";
         }
 
     } else if (playerSelection == 'scissors') {
         if (computerSelection == 'rock') {
-            return "Too bad, you lost! Rock beats scissors!";
+            console.log("Sadly, you lost this round");
+            return "computer";
         } else if (computerSelection == 'paper') {
-            return "Congratulations, you won!, scissors beat paper";
+            console.log("Congratz! You won against the computer!");
+            return "player";
         }
     } 
     
@@ -54,36 +63,39 @@ function playRound (playerSelection, computerSelection) {
     // Paper beats Rock
     // Scissors beat Paper;
     
-// Create a function toplay 5 rounds of Rock paper Scissors
+// Create a function to play 5 rounds of Rock paper Scissors
 // Function should keep track of score
 // Function should report the results at the end
 
 function game() {
+    let compScore = 0;
+    let playerScore = 0;
+
     for (let i = 0; i < 5; i++) {
         //inside this function, write code that plays 5 rounds
         let playerSelection = prompt("Enter Rock, Paper or Scissors").toLowerCase();
 
         let computerSelection = getComputerChoice();
 
-        playRound(playerSelection, computerSelection);
-        
-        //code above plays one round of Rock, Paper, Scissors
+        let result = playRound(playerSelection, computerSelection);
 
-        let compScore = 0;
-        let playerScore = 0;
         //keeps track of the score
-        
-
-        if (result = "computer") {
+        if (result == "computer") {
             compScore += 1;
-        } else if (result = "player") {
+        } else if (result == "player") {
             playerScore += 1;
         }
-        // code above updates the score
+    }
 
+    console.log('And the Final Score is Computer = ' + compScore + ', Player = ' + playerScore);
 
-
-        //prints the results of who won each round, and then the final score
+    // bottom code prints out the final winner
+    if (compScore == playerScore) {
+        console.log("You tied with the Computer");
+    } else if (compScore > playerScore) {
+        console.log("Noobhai you lost!");
+    } else if (playerScore > compScore) {
+        console.log("You won against the computer!");
     }
 }
 
